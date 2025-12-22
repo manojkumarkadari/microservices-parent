@@ -11,6 +11,7 @@ import com.manojtechie.order_service.dto.OrderLineItemsDto;
 import java.util.UUID;
 import java.util.List;
 import com.manojtechie.order_service.repository.OrderRepository;
+
 @Service
 @RequiredArgsConstructor
 
@@ -32,7 +33,7 @@ public class OrderService {
         order.setOrderLineItems(items);
 
         orderRepository.save(order);
-
+ 
         System.out.println("Order placed with " + orderRequest.getOrderLineItemsDtoList().size() + " items.");
     }
 
@@ -48,6 +49,13 @@ public class OrderService {
         List<Order> orders = orderRepository.findAll();
         return orders.stream().map(this::mapToOrderResponse).toList();
     }
+
+//get Order By Id
+
+public OrderResponse getOrderById(Long id) {
+    Order order = orderRepository.findById(id).orElseThrow(() -> new RuntimeException("Order not found"));
+    return mapToOrderResponse(order);
+}
 
     private OrderResponse mapToOrderResponse(Order order) {
         return new OrderResponse(
