@@ -5,7 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.manojtechie.inventory_service.repository.InventoryRepository;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 public class InventoryService {
 
     private final InventoryRepository inventoryRepository;
@@ -17,9 +17,6 @@ public class InventoryService {
     public Boolean isInStock(String skuCode) {
         // Implementation logic to check inventory
 
-        inventoryRepository.findBySkuCode(skuCode);
-
-
-        return false; // Placeholder return value
+        return inventoryRepository.findBySkuCode(skuCode).isPresent();
     }
 }
