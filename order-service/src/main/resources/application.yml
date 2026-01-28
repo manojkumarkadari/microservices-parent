@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    config:
+      import-check:
+        enabled: false
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serializer.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+server:
+  port: 8082
+
+application:
+  name: order_service

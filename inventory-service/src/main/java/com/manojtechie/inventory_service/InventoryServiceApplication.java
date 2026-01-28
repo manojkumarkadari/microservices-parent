@@ -1,3 +1,4 @@
+
 package com.manojtechie.inventory_service;
 
 import org.springframework.boot.SpringApplication;
@@ -25,7 +26,7 @@ public class InventoryServiceApplication {
 
 				Inventory item2 = new Inventory();
 				item2.setSkuCode("SKU456");
-				item2.setQuantity(50);
+				item2.setQuantity(0);
 				inventoryRepository.save(item1);
 				inventoryRepository.save(item2);
 			};
