@@ -34,5 +34,5 @@ public class KafkaProducerConfig {
     private Map<String,Object> defaultProducerProps()
     {
         return kafkaProperties.buildProducerProperties();
-    }
+    }  
 }
